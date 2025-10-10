@@ -6,7 +6,6 @@
 
 generator client {
   provider = "prisma-client-js"
-
 }
 
 datasource db {
@@ -15,9 +14,9 @@ datasource db {
 }
 
 model User {
-  id        String @id @default(cuid())
-  clerk     String @unique
-  email     String @unique
+  id        String   @id @default(cuid())
+  clerk     String   @unique
+  email     String   @unique
   firstName String?
   lastName  String?
   phone     String?
@@ -35,44 +34,41 @@ model Doctor {
   name       String
   email      String   @unique
   phone      String
-  speciality String 
+  speciality String
   bio        String?
   imageUrl   String
   gender     Gender
-  isActive   Boolean @default(true) 
-  createdAt  DateTime @default(now()) 
-  updatedAt  DateTime @updatedAt() 
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt()
 
   //relationships
   appointments Appointment[]
 
   @@map("doctors")
-
-
 }
 
 model Appointment {
-  id          String            @id @default(cuid())
-  date        DateTime
-  time        String // store time as string i.e. 14:30
-  duration    Int               @default(30) // duration in minutes
-  status      AppointmentStatus @default(CONFIRMED)
-  notes       String?
-  reason      String? // reason for appointment - teeth cleaning? emergency visit? etc.
-  createdAt   DateTime          @default(now())
-  updatedAt   DateTime          @updatedAt
+  id        String            @id @default(cuid())
+  date      DateTime
+  time      String // store time as string i.e. 14:30
+  duration  Int               @default(30) // duration in minutes
+  status    AppointmentStatus @default(CONFIRMED)
+  notes     String?
+  reason    String? // reason for appointment - teeth cleaning? emergency visit? etc.
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
 
-// foreign keys
-userId String
-doctorId String
+  // foreign keys
+  userId   String
+  doctorId String
 
-// relationships
-user   User@relation(fields: [userId], references: [id], onDelete: Cascade)
-doctor Doctor@relation(fields: [doctorId], references: [id], onDelete: Cascade)
+  // relationships
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  doctor Doctor @relation(fields: [doctorId], references: [id], onDelete: Cascade)
 
-@@map("appointments")
+  @@map("appointments")
 }
-
 
 enum Gender {
   MALE
@@ -81,5 +77,5 @@ enum Gender {
 
 enum AppointmentStatus {
   CONFIRMED
-  COMPLETED 
+  COMPLETED
 }
