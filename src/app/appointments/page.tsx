@@ -62,7 +62,7 @@ function AppointmentsPage() {
           };
 
           try {
-            const emailResponse = await fetch("/api/send-appointment-email", {
+            const emailResponse = await fetch("/api/send-appointment-emails", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
