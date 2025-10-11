@@ -119,7 +119,7 @@ export async function getAvailableDoctors() {
         });
 
         return doctors.map((doctor) => ({
-            ...doctors,
+            ...doctor,
             appointmentCount: doctor._count.appointments,
         }));
     } catch (error) {

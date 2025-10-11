@@ -28,7 +28,7 @@ export function useCreateDoctor() {
 }
 
 // get available doctors for appointments
-export function useAvaliableDoctor() {
+export function useAvailableDoctors() {
     const result = useQuery({
         queryKey: ["getAvailableDoctors"],
         queryFn: getAvailableDoctors,
