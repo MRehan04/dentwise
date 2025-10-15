@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic"; // 👈 Add this line at the very top
+
 import ActivityOverview from "@/components/dashboard/ActivityOverview"
 import WelcomeSection from "@/components/voice/WelcomeSection"
 import MainActions from "@/components/dashboard/MainActions"
